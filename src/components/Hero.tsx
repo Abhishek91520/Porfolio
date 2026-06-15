@@ -1,13 +1,30 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import HeroNetwork from "./HeroNetwork";
-import { Download, Mail, Compass, Terminal, Shield } from "lucide-react";
-import gsap from "gsap";
+import { Download, Compass, Terminal, Cpu, Server } from "lucide-react";
 
 export default function Hero() {
-  const wordRef = useRef<HTMLSpanElement | null>(null);
+  const specialties = [
+    {
+      tag: "SPECIALTY 01",
+      title: "CRM Automation Ecosystems",
+      icon: Terminal,
+      description: "Deep integrations with Zoho, Salesforce, and custom hooks, eliminating manual bottlenecks."
+    },
+    {
+      tag: "SPECIALTY 02",
+      title: "ERP Customizations",
+      icon: Cpu,
+      description: "Tailored Odoo development, modular workflow structures, and automated inventory synchronization."
+    },
+    {
+      tag: "SPECIALTY 03",
+      title: "Systems Integration",
+      icon: Server,
+      description: "High-availability secure APIs, server vitals monitoring, and custom ETL pipelines."
+    }
+  ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -16,217 +33,149 @@ export default function Hero() {
     }
   };
 
-  useEffect(() => {
-    const word = wordRef.current;
-    if (!word) return;
-
-    const WORDS = [
-      "automate business operations",
-      "optimize financial workflows",
-      "connect enterprise APIs",
-      "streamline ERP modules",
-      "eliminate manual work",
-    ];
-
-    const tl = gsap.timeline({ repeat: -1 });
-
-    WORDS.forEach((text) => {
-      tl.to(word, {
-        opacity: 0,
-        y: -12,
-        duration: 0.4,
-        ease: "power2.in",
-        delay: 2.8,
-      })
-      .call(() => {
-        if (word) word.textContent = text;
-      })
-      .fromTo(word,
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
-      );
-    });
-
-    return () => {
-      tl.kill();
-    };
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background px-6 pt-24 pb-16">
-      {/* Background Interactive Canvas */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background px-6 pt-32 pb-24">
+      {/* Background Interactive Network Canvas */}
       <HeroNetwork />
 
-      {/* Glow Spotlights */}
-      <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-primary/3 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] rounded-full bg-secondary/3 blur-[120px] pointer-events-none" />
+      {/* Center Cinematic Orbital System */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+        {/* Ambient glow spotlights */}
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+        <div className="absolute w-[600px] h-[600px] rounded-full bg-secondary/5 blur-[150px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        {/* Left Column: Personal Copy */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left">
-          {/* Personal Greeting Tag */}
+        {/* Orbit Rings Core */}
+        <div className="relative w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] flex items-center justify-center opacity-85">
+          {/* Concentric Circle 1 with glowing node */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs font-semibold text-primary mb-6 tracking-widest uppercase font-display"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
+            className="absolute inset-0 rounded-full border border-dashed border-primary/20"
           >
-            Hi, I{"'"}m Abhishek Thummar
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#00E5C2]" />
           </motion.div>
 
-          {/* Main Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 text-gradient font-display max-w-2xl min-h-[3.3em] lg:min-h-[2.2em]"
-          >
-            I build systems that <br className="hidden sm:inline" />
-            <span ref={wordRef} className="text-gradient-teal inline-block">
-              automate business operations
-            </span>
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg text-muted max-w-xl font-normal leading-relaxed mb-10 tracking-wide"
-          >
-            Software Engineer and IT Assistant Manager at ICICI Prudential AMC. I specialize in CRM automation, ERP development, and connecting APIs to resolve real-world business bottlenecks.
-          </motion.p>
-
-          {/* Call to Actions */}
+          {/* Concentric Circle 2 with glowing node */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+            animate={{ rotate: -360 }}
+            transition={{ repeat: Infinity, duration: 38, ease: "linear" }}
+            className="absolute w-[85%] h-[85%] rounded-full border border-dotted border-secondary/20"
           >
-            {/* Explore Work */}
-            <button
-              onClick={() => scrollToSection("systems")}
-              className="group relative flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black font-semibold text-xs uppercase tracking-wider rounded-lg hover:bg-neutral-200 transition-all duration-300 shadow-[0_4px_20px_rgba(255,255,255,0.08)] active:scale-95 cursor-pointer"
-            >
-              <Compass className="w-4 h-4 text-black group-hover:rotate-45 transition-transform duration-300" />
-              Explore My Work
-            </button>
-
-            {/* Download Resume */}
-            <a
-              href="https://drive.google.com/file/d/1SScM1OURsBN1GoI7mZuUKChnoITOQviF/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center gap-2 px-6 py-3.5 border border-border bg-surface/40 hover:bg-surface-hover hover:border-neutral-700 transition-all duration-300 text-xs font-semibold uppercase tracking-wider rounded-lg active:scale-95"
-            >
-              <Download className="w-4 h-4 text-muted group-hover:text-white" />
-              Download Resume
-            </a>
-
-            {/* Get In Touch */}
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 text-xs font-semibold text-primary uppercase tracking-wider rounded-lg active:scale-95 cursor-pointer"
-            >
-              <Mail className="w-4 h-4 text-primary" />
-              Get In Touch
-            </button>
+            <div className="absolute bottom-0 right-1/4 w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_8px_#7C5CFC]" />
           </motion.div>
+
+          {/* Concentric Circle 3 with glowing node */}
+          <motion.div
+            animate={{ rotate: 180 }}
+            transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
+            className="absolute w-[65%] h-[65%] rounded-full border border-dashed border-white/5"
+          >
+            <div className="absolute top-1/4 left-0 w-1.5 h-1.5 rounded-full bg-white/30" />
+          </motion.div>
+
+          {/* Center Glowing Core */}
+          <div className="absolute w-28 h-28 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-primary/10 to-secondary/10 opacity-30 blur-2xl animate-pulse" />
         </div>
-
-        {/* Right Column: Systems Console Card */}
-        <div className="lg:col-span-5 w-full flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-[420px] glassmorphism-card rounded-2xl overflow-hidden border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex flex-col"
-          >
-            {/* Header window control buttons */}
-            <div className="bg-neutral-950/60 px-4 py-3 border-b border-white/5 flex items-center justify-between">
-              <div className="flex gap-1.5 items-center">
-                <span className="w-2.5 h-2.5 rounded-full bg-neutral-800" />
-                <span className="w-2.5 h-2.5 rounded-full bg-neutral-800" />
-                <span className="w-2.5 h-2.5 rounded-full bg-neutral-800" />
-              </div>
-              <span className="text-[10px] uppercase tracking-widest text-muted font-bold flex items-center gap-1.5 font-display">
-                <Terminal className="w-3 h-3 text-primary" /> systems-status.sh
-              </span>
-              <span className="w-4" /> {/* Spacer */}
-            </div>
-
-            {/* Console Details */}
-            <div className="p-6 flex flex-col gap-5 select-none font-normal text-xs text-muted">
-              {/* Profile Bio details */}
-              <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary p-[1px]">
-                  <div className="w-full h-full bg-surface rounded-xl flex items-center justify-center text-lg font-bold text-white font-display uppercase">
-                    AT
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white font-display">Abhishek Thummar</h3>
-                  <span className="text-[10px] text-primary font-medium tracking-wide">Assistant Manager – IT</span>
-                </div>
-              </div>
-
-              {/* Status List */}
-              <div className="space-y-3 font-mono text-[11px] leading-relaxed text-neutral-400">
-                <div className="flex items-start gap-2">
-                  <span className="text-primary font-bold">~</span>
-                  <span><strong>Loc:</strong> Mumbai, India</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-primary font-bold">~</span>
-                  <span><strong>Focus:</strong> CRM Automation / ERP Custom Modules</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-primary font-bold">~</span>
-                  <span><strong>Deploy:</strong> ICICI Prudential AMC</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-primary/70 font-bold">&gt;</span>
-                  <span className="text-primary font-bold animate-pulse">SYSTEMS ONLINE & COMPILATION SECURE</span>
-                </div>
-              </div>
-
-              {/* Mini Indicators Grid */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <div className="p-3 rounded-lg bg-neutral-950/60 border border-neutral-900">
-                  <span className="text-[9px] uppercase tracking-wider text-muted font-bold block mb-1">Valuation platform</span>
-                  <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" /> Synchronized
-                  </span>
-                </div>
-                <div className="p-3 rounded-lg bg-neutral-950/60 border border-neutral-900">
-                  <span className="text-[9px] uppercase tracking-wider text-muted font-bold block mb-1">CRM workflow</span>
-                  <span className="text-xs text-primary font-semibold">80% Automated</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Status line */}
-            <div className="bg-neutral-950/40 px-6 py-2.5 border-t border-white/5 flex items-center justify-between text-[9px] tracking-wider text-muted font-mono uppercase">
-              <span>Security hash: [SEC-OK]</span>
-              <span className="flex items-center gap-1 text-primary"><Shield className="w-2.5 h-2.5 text-primary" /> Encrypted</span>
-            </div>
-          </motion.div>
-        </div>
-
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
-      >
-        <span className="text-[10px] uppercase tracking-[0.25em] text-muted">Scroll to begin</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-neutral-700 to-transparent animate-pulse" />
-      </motion.div>
+      {/* Main Centered Content Stack */}
+      <div className="max-w-4xl mx-auto w-full relative z-10 flex flex-col items-center text-center px-4">
+        {/* Accent Tag */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex items-center gap-2 mb-6 px-3.5 py-1.5 glassmorphism rounded-full border border-white/5 text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-bold text-primary"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          SYSTEMS ARCHITECTURE & AUTOMATION
+        </motion.div>
+
+        {/* Title Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] text-white font-display uppercase"
+        >
+          Abhishek <span className="text-gradient-teal">Thummar</span>
+        </motion.h1>
+
+        {/* Description Copy */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-8 text-sm sm:text-base text-neutral-400 font-medium leading-relaxed max-w-2xl mx-auto"
+        >
+          Assistant Manager – IT at <strong className="text-neutral-200 font-semibold">ICICI Prudential AMC</strong>. Specializing in custom CRM integrations, automated reporting systems, and secure database pipelines. Translating complex business requirements into high-availability digital solutions.
+        </motion.p>
+
+        {/* Centered CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-10 flex flex-wrap gap-4 items-center justify-center"
+        >
+          <button
+            onClick={() => scrollToSection("systems")}
+            className="group flex items-center gap-2 px-6 py-3 border border-primary/30 bg-primary/5 hover:bg-primary/15 text-primary text-xs uppercase tracking-widest rounded-full transition-all duration-300 font-bold cursor-pointer shadow-[0_0_15px_rgba(0,229,194,0.08)] hover:shadow-[0_0_25px_rgba(0,229,194,0.15)] active:scale-95"
+          >
+            <Compass className="w-4 h-4 text-primary group-hover:rotate-45 transition-transform duration-300" />
+            Explore Systems
+          </button>
+
+          <a
+            href="https://drive.google.com/file/d/1SScM1OURsBN1GoI7mZuUKChnoITOQviF/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="group flex items-center gap-2 px-6 py-3 border border-neutral-800 bg-surface/35 hover:border-neutral-755 hover:bg-surface/70 text-neutral-300 hover:text-white text-xs uppercase tracking-widest rounded-full transition-all duration-300 font-bold active:scale-95 text-center cursor-pointer"
+          >
+            <Download className="w-4 h-4 text-neutral-450 group-hover:text-white transition-colors" />
+            Get Resume
+          </a>
+
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="group flex items-center gap-1.5 px-6 py-3 text-neutral-400 hover:text-white text-xs uppercase tracking-widest transition-all duration-300 font-bold cursor-pointer relative"
+          >
+            <span>Get In Touch</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-primary/60 group-hover:bg-primary transition-colors" />
+            <span className="absolute bottom-1.5 left-6 right-8 h-[1px] bg-primary/20 group-hover:bg-primary/60 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Specialties Row (Simon Sparks inspired card row) */}
+      <div className="max-w-6xl mx-auto w-full mt-24 relative z-10 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {specialties.map((spec, idx) => (
+            <motion.div
+              key={spec.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 + idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="p-6 bg-surface/40 hover:bg-surface/70 border border-neutral-900 hover:border-neutral-800 rounded-xl transition-all duration-300 flex flex-col justify-between min-h-[160px] group shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:-translate-y-1"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] tracking-widest uppercase text-neutral-500 font-bold">
+                    {spec.tag}
+                  </span>
+                  <spec.icon className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="text-base font-bold text-white mb-2 font-display">
+                  {spec.title}
+                </h3>
+                <p className="text-xs text-neutral-400 font-medium leading-relaxed">
+                  {spec.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

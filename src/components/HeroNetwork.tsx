@@ -8,7 +8,6 @@ interface Node {
   vx: number;
   vy: number;
   radius: number;
-  label?: string;
   color: string;
 }
 
@@ -52,15 +51,12 @@ export default function HeroNetwork() {
 
     // Node configuration
     const nodes: Node[] = [];
-    const labels = ["CRM", "ERP", "API GATEWAY", "DATA HUB", "REPORTS", "WORKFLOW", "AUTOMATION", "MONITORING"];
 
     const initNodes = () => {
       nodes.length = 0;
       const numNodes = Math.min(Math.floor((width * height) / 18000), 55); // Adaptive density
       
       for (let i = 0; i < numNodes; i++) {
-        // Assign labels to only some of the nodes
-        const label = i < labels.length ? labels[i] : undefined;
         const color = Math.random() > 0.4 ? "#00E5C2" : "#7C5CFC"; // Cyan or Purple
         
         nodes.push({
@@ -68,8 +64,7 @@ export default function HeroNetwork() {
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * 0.4,
           vy: (Math.random() - 0.5) * 0.4,
-          radius: label ? 4 : Math.random() * 2 + 1,
-          label,
+          radius: Math.random() * 2 + 1,
           color,
         });
       }
@@ -153,30 +148,7 @@ export default function HeroNetwork() {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fillStyle = node.color;
-        
-        // Add subtle outer glow to labeled nodes
-        if (node.label) {
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = node.color;
-        } else {
-          ctx.shadowBlur = 0;
-        }
         ctx.fill();
-        ctx.shadowBlur = 0; // Reset
-
-        // Draw Node Label if present
-        if (node.label) {
-          ctx.fillStyle = "rgba(255, 255, 255, 0.45)";
-          ctx.font = "bold 9px var(--font-display)";
-          ctx.fillText(node.label, node.x + 8, node.y + 3);
-          
-          // Connect text label to node with an extremely faint sub-line
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, node.radius + 3, 0, Math.PI * 2);
-          ctx.strokeStyle = "rgba(255,255,255,0.08)";
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
       });
 
       animationFrameId = requestAnimationFrame(draw);

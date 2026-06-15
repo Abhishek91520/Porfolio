@@ -71,7 +71,7 @@ export default function Home() {
                     <button
                       key={link.id}
                       onClick={() => scrollToSection(link.id)}
-                      className="text-[10px] uppercase tracking-widest text-muted hover:text-white transition-colors cursor-pointer"
+                      className="text-[10px] uppercase tracking-widest text-muted hover:text-white transition-colors cursor-pointer font-medium"
                     >
                       {link.label}
                     </button>
@@ -103,7 +103,7 @@ export default function Home() {
                       <button
                         key={link.id}
                         onClick={() => scrollToSection(link.id)}
-                        className="text-xs uppercase tracking-widest text-muted hover:text-white transition-colors cursor-pointer py-2.5 w-full text-center hover:bg-white/5 rounded-xl"
+                        className="text-xs uppercase tracking-widest text-muted hover:text-white transition-colors cursor-pointer py-2.5 w-full text-center hover:bg-white/5 rounded-xl font-medium"
                       >
                         {link.label}
                       </button>

@@ -311,8 +311,8 @@ export default function GithubLeetcode() {
                   
                   {/* Easy */}
                   <div>
-                    <div className="flex justify-between items-center text-xs mb-1.5">
-                      <span className="text-neutral-300 font-medium flex items-center gap-2">
+                    <div className="flex justify-between items-center text-xs mb-1.5 font-medium">
+                      <span className="text-neutral-300 flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-emerald-500" /> Easy
                       </span>
                       <span className="text-muted">
@@ -330,8 +330,8 @@ export default function GithubLeetcode() {
 
                   {/* Medium */}
                   <div>
-                    <div className="flex justify-between items-center text-xs mb-1.5">
-                      <span className="text-neutral-300 font-medium flex items-center gap-2">
+                    <div className="flex justify-between items-center text-xs mb-1.5 font-medium">
+                      <span className="text-neutral-300 flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-amber-500" /> Medium
                       </span>
                       <span className="text-muted">
@@ -349,8 +349,8 @@ export default function GithubLeetcode() {
 
                   {/* Hard */}
                   <div>
-                    <div className="flex justify-between items-center text-xs mb-1.5">
-                      <span className="text-neutral-300 font-medium flex items-center gap-2">
+                    <div className="flex justify-between items-center text-xs mb-1.5 font-medium">
+                      <span className="text-neutral-300 flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-rose-500" /> Hard
                       </span>
                       <span className="text-muted">

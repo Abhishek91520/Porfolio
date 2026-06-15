@@ -19,7 +19,7 @@ const EVENTS: TimelineEvent[] = [
     role: "Diploma in Computer Engineering",
     company: "Score: 90.40%",
     description:
-      "Completed with distinction. Built foundations in operating systems, algorithms, databases, and general computer architecture.",
+      "Completed with distinction. Built solid foundations in operating systems, data structures, database engines, and software architecture concepts.",
     technologies: ["C", "Java", "SQL", "Computer Hardware"],
     icon: BookOpen,
   },
@@ -28,7 +28,7 @@ const EVENTS: TimelineEvent[] = [
     role: "B.E. in Computer Engineering",
     company: "Score: 9.43 / 10",
     description:
-      "Graduated with honors. Advanced training in software design, distributed computing, database engineering, and academic project development.",
+      "Graduated with honors. Advanced training in software design patterns, distributed computing systems, database engineering, and smart contract development.",
     technologies: ["OOP", "Web Technologies", "Solidity", "Software Design"],
     icon: BookOpen,
   },
@@ -37,16 +37,16 @@ const EVENTS: TimelineEvent[] = [
     role: "Software Engineer",
     company: "Tauroic Technologies",
     description:
-      "Built customized ERP solutions using Python, Odoo ERP integrations, and React templates, focusing on automating manual bookkeeping and inventory modules.",
+      "Engineered bespoke Python Odoo ERP structures, database integrations, and responsive React modules to automate invoicing and tracking workflows.",
     technologies: ["Python", "Odoo ERP", "React", "PostgreSQL"],
     icon: Briefcase,
   },
   {
     year: "June 2024 - May 2025",
     role: "Software Engineer",
-    company: "Technopals India",
+    company: "Technopals (ICICI Prudential AMC)",
     description:
-      "Assigned to client ICICI Prudential AMC. Automated enterprise business operations, designed Zoho widgets, and established Deluge scripts for CRM synchronization.",
+      "Built Zoho widgets, established Deluge scripts, and created automation modules for ICICI Prudential AMC, automating 80%+ of incoming reports.",
     technologies: ["Zoho CRM", "Deluge Scripting", "JavaScript", "CRM Widgets"],
     icon: TrendingUp,
   },
@@ -55,8 +55,8 @@ const EVENTS: TimelineEvent[] = [
     role: "Assistant Manager – IT",
     company: "ICICI Prudential AMC",
     description:
-      "Leading developmental tasks for investor dashboards, portfolio reporting modules, CRM workflows, and critical data aggregation databases.",
-    technologies: ["Investor Systems", "Reporting Platforms", "CRM Automation", "Operational Workflows"],
+      "Leading technical development for investor web portals, automated data valuation pipelines, and secure aggregate reporting systems.",
+    technologies: ["Investor Dashboards", "Reporting Engines", "Database Automation", "IT Operations"],
     icon: Award,
   },
 ];
@@ -70,110 +70,112 @@ export default function AboutTimeline() {
 
       <div className="max-w-4xl mx-auto">
         {/* Section Title */}
-        <div className="text-center mb-20">
+        <div className="mb-16">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-xs uppercase tracking-[0.25em] text-primary font-semibold mb-3"
+            className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-3"
           >
             My Professional Story
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.6 }}
+            transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-extrabold text-gradient font-display"
           >
             Systems Engineering Timeline
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-muted text-sm md:text-base max-w-xl mx-auto mt-4 font-normal"
+            transition={{ delay: 0.2 }}
+            className="text-muted text-sm md:text-base max-w-xl mt-4 font-normal"
           >
-            From engineering principles to managing enterprise infrastructure and automating system workflows.
+            A chronological timeline of my training and professional experience in systems development and automation.
           </motion.p>
         </div>
 
         {/* Timeline body */}
-        <div className="relative">
-          {/* Vertical Center line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-2 bottom-2 w-[1px] bg-neutral-800" />
+        <div className="relative pl-8 md:pl-12">
+          {/* Vertical left track line */}
+          <div className="absolute left-[10px] top-3 bottom-3 w-[2px] bg-gradient-to-b from-primary via-secondary to-neutral-900/10" />
 
-          {EVENTS.map((event, index) => {
-            const Icon = event.icon;
-            const isEven = index % 2 === 0;
+          <div className="space-y-12">
+            {EVENTS.map((event, index) => {
+              const Icon = event.icon;
+              const isPresent = event.year.includes("Present");
 
-            return (
-              <div
-                key={index}
-                className={`relative flex flex-col md:flex-row items-start md:items-center mb-16 last:mb-0 ${
-                  isEven ? "md:justify-start" : "md:justify-end"
-                }`}
-              >
-                {/* Timeline Node Icon */}
-                <motion.div
-                  initial={{ scale: 0.6, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute left-4 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-surface border border-neutral-700 z-10 text-primary shadow-[0_0_15px_rgba(0,229,194,0.1)]"
-                >
-                  <Icon className="w-4 h-4" />
-                </motion.div>
+              return (
+                <div key={index} className="relative group">
+                  {/* Timeline Anchor Node */}
+                  <div className="absolute left-[-32px] top-3 flex items-center justify-center w-[18px] h-[18px] rounded-full bg-neutral-950 border-2 border-neutral-800 group-hover:border-primary transition-colors duration-300 z-10">
+                    {isPresent ? (
+                      <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#00E5C2]" />
+                    ) : (
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-secondary transition-colors" />
+                    )}
+                  </div>
 
-                {/* Timeline Card */}
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? -30 : 30, y: 10 }}
-                  whileInView={{ opacity: 1, x: 0, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className={`w-full md:w-[45%] pl-12 md:pl-0 ${isEven ? "md:pr-10" : "md:pl-10"}`}
-                >
-                  <div className="glassmorphism-card p-6 md:p-8 rounded-xl relative hover-lift">
-                    {/* Event Year & Badge */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-2xl font-black text-white/90 font-display">
+                  {/* Split Grid Timeline Card */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="glassmorphism-card p-6 md:p-8 rounded-xl relative hover-lift grid grid-cols-1 md:grid-cols-12 gap-6 items-start"
+                  >
+                    {/* Col 1: Date and Organization Badge (Spans 4 cols on desktop) */}
+                    <div className="md:col-span-4 flex flex-col items-start gap-2.5">
+                      <span className="text-xl sm:text-2xl font-black text-white font-display tracking-tight leading-none">
                         {event.year}
                       </span>
                       {event.company && (
-                        <span className="text-[10px] tracking-widest font-bold uppercase text-secondary px-2.5 py-1 rounded bg-secondary/10 border border-secondary/20">
+                        <span className="text-[10px] tracking-widest font-extrabold uppercase text-primary bg-primary/10 px-2.5 py-1 rounded border border-primary/20 font-mono">
                           {event.company}
                         </span>
                       )}
                     </div>
 
-                    {/* Role Title */}
-                    <h3 className="text-lg font-bold text-white font-display mb-2">
-                      {event.role}
-                    </h3>
+                    {/* Col 2: Role Details and Tech (Spans 8 cols on desktop) */}
+                    <div className="md:col-span-8 flex flex-col justify-between h-full">
+                      <div>
+                        {/* Title and Icon */}
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <div className="p-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-secondary shrink-0">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <h3 className="text-base sm:text-lg font-bold text-white font-display">
+                            {event.role}
+                          </h3>
+                        </div>
 
-                    {/* Description */}
-                    <p className="text-xs md:text-sm text-muted leading-relaxed font-normal mb-5">
-                      {event.description}
-                    </p>
+                        {/* Description */}
+                        <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal mb-5">
+                          {event.description}
+                        </p>
+                      </div>
 
-                    {/* Tech tag list */}
-                    <div className="flex flex-wrap gap-2">
-                      {event.technologies.map((tech, techIdx) => (
-                        <span
-                          key={techIdx}
-                          className="text-[10px] font-medium tracking-wide text-white/70 px-2 py-1 rounded bg-neutral-900 border border-neutral-800"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      {/* Tech list pills */}
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {event.technologies.map((tech, techIdx) => (
+                          <span
+                            key={techIdx}
+                            className="text-[9px] font-semibold text-white/80 px-2 py-0.5 rounded bg-neutral-900 border border-neutral-850"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </div>
-            );
-          })}
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

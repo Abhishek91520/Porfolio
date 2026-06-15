@@ -151,7 +151,7 @@ export default function Contact() {
                   href="https://drive.google.com/file/d/1SScM1OURsBN1GoI7mZuUKChnoITOQviF/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-2 px-5 py-3.5 border border-primary/20 hover:border-primary/40 bg-primary/[0.01] hover:bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider rounded-lg transition-all duration-300 w-full"
+                  className="flex items-center justify-center gap-2 px-5 py-3.5 border border-primary/20 hover:border-primary/45 bg-primary/[0.01] hover:bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider rounded-lg transition-all duration-300 w-full"
                 >
                   <FileText className="w-4 h-4" />
                   Get Full Resume (PDF)
@@ -240,7 +240,7 @@ export default function Contact() {
                   </span>
                   <button
                     type="submit"
-                    className="flex items-center justify-center gap-2 px-5 py-3 bg-white text-black font-semibold text-xs uppercase tracking-wider rounded-lg hover:bg-neutral-200 transition-colors cursor-pointer select-none active:scale-98"
+                    className="flex items-center justify-center gap-2 px-5 py-3 border border-primary/30 bg-primary/5 hover:bg-primary/15 text-primary text-xs uppercase tracking-wider rounded-lg transition-all duration-300 font-bold cursor-pointer shadow-[0_0_15px_rgba(0,229,194,0.08)] hover:shadow-[0_0_25px_rgba(0,229,194,0.15)] active:scale-95"
                   >
                     <Send className="w-3.5 h-3.5" />
                     Transmit Message
