@@ -1,16 +1,56 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import HeroNetwork from "./HeroNetwork";
 import { Download, Mail, Compass, Terminal, Shield } from "lucide-react";
+import gsap from "gsap";
 
 export default function Hero() {
+  const wordRef = useRef<HTMLSpanElement | null>(null);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    const word = wordRef.current;
+    if (!word) return;
+
+    const WORDS = [
+      "automate business operations",
+      "optimize financial workflows",
+      "connect enterprise APIs",
+      "streamline ERP modules",
+      "eliminate manual work",
+    ];
+
+    const tl = gsap.timeline({ repeat: -1 });
+
+    WORDS.forEach((text) => {
+      tl.to(word, {
+        opacity: 0,
+        y: -12,
+        duration: 0.4,
+        ease: "power2.in",
+        delay: 2.8,
+      })
+      .call(() => {
+        if (word) word.textContent = text;
+      })
+      .fromTo(word,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      );
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background px-6 pt-24 pb-16">
@@ -40,9 +80,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 text-gradient font-display max-w-2xl"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 text-gradient font-display max-w-2xl min-h-[3.3em] lg:min-h-[2.2em]"
           >
-            I build systems that automate business operations
+            I build systems that <br className="hidden sm:inline" />
+            <span ref={wordRef} className="text-gradient-teal inline-block">
+              automate business operations
+            </span>
           </motion.h1>
 
           {/* Subheadline */}

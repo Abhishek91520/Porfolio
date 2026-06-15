@@ -11,7 +11,7 @@ import TechMap from "@/components/TechMap";
 import AchievementsImpact from "@/components/AchievementsImpact";
 import GithubLeetcode from "@/components/GithubLeetcode";
 import Contact from "@/components/Contact";
-import { Compass, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -53,10 +53,16 @@ export default function Home() {
                 {/* Logo */}
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="flex items-center gap-2 font-display text-xs font-extrabold tracking-widest text-white uppercase cursor-pointer"
+                  className="relative group/logo flex items-center gap-2.5 cursor-pointer"
                 >
-                  <Compass className="w-3.5 h-3.5 text-primary animate-pulse" />
-                  ABHISHEK T.
+                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary to-secondary p-[1px] flex items-center justify-center shadow-[0_0_12px_rgba(0,229,194,0.1)] group-hover/logo:shadow-[0_0_18px_rgba(0,229,194,0.25)] transition-all duration-300">
+                    <div className="w-full h-full bg-neutral-950 rounded-[7px] flex items-center justify-center">
+                      <span className="font-display font-black text-xs text-white tracking-tighter">AT</span>
+                    </div>
+                  </div>
+                  <span className="font-display text-[10px] font-bold tracking-[0.25em] text-white uppercase group-hover/logo:text-primary transition-colors duration-300">
+                    ABHISHEK T.
+                  </span>
                 </button>
 
                 {/* Desktop Nav Links */}
